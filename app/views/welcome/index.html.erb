@@ -1,0 +1,26 @@
+<style>
+h1 {
+    font-size: 36px;
+    font-weight: bolder;
+    margin-left: 50px;
+    margin-bottom: 0px;
+}
+
+h3 {
+    margin-top: 0px;
+    margin-left: 40px;
+}
+</style>
+
+<h1><%= image_tag  "checkmark.png" %> Check It Off </h1>
+<h3> Keeping Your Assignments Organized! </h3>
+
+<div id="get-started">
+    <p>New users can create account here: </p>
+    <%= link_to 'Create Account', controller: 'users', action: 'new' %>
+
+    <p>Already have an account, log in here: </p>
+    <%= link_to 'Log In', controller: 'sessions', action: 'new' %>
+</div>
+
+<%# <%= link_to 'View My Assignments', controller: 'assignments' %>

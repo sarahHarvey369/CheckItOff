@@ -1,0 +1,17 @@
+<p>
+  <strong>Task:</strong>
+  <%= @assignment.task %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @assignment.description %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @assignment.deadline %>
+</p>
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %>  |  
+<%= link_to 'Assignment List', assignments_path %>

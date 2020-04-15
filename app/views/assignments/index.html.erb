@@ -1,0 +1,24 @@
+<h1>Assignments List</h1>
+<%= link_to 'Add New Assignment', '/users/:user_id/assignments/new' %>
+
+<table>
+  <tr>
+    <th>Task</th>
+    <th>Description</th>
+    <th>Deadline</th>
+    <th colspan="4"></th>
+  </tr>
+ 
+  <% @assignments.each do |assignment| %>
+    <tr>
+        <td><%= assignment.task %></td>
+        <td><%= assignment.description %></td>
+        <td><%= assignment.deadline %></td>
+        <td><%= link_to 'Show', user_assignment_path(assignment) %></td>
+        <td><%= link_to 'Edit', edit_user_assignment_path(assignment) %></td>
+        <td><%= link_to 'Remove', user_assignments_path(assignment),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>..
+    </tr>
+  <% end %>
+</table>

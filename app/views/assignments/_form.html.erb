@@ -1,0 +1,36 @@
+<%= form_with (model: [ @user, @user.assignments.build ], local: true) do |form| %>
+ 
+    <% if @assignment.errors.any? %>
+      <div id="error_explained">
+        <h2>
+          <%= pluralize(@assignment.errors.count, "error") %> prohibited
+          this article from being saved:
+        </h2>
+        <ul>
+          <% @assignment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+   
+    <p>
+      <%= form.label :task %><br>
+      <%= form.text_field :task %>
+    </p>
+   
+    <p>
+      <%= form.label :description %><br>
+      <%= form.text_area :description %>
+    </p>
+
+    <p>
+      <%= form.label :deadline %><br>
+      <%= form.text_field :deadline %>
+    </p>
+   
+    <p>
+      <%= form.submit %>
+    </p>
+   
+  <% end %>
