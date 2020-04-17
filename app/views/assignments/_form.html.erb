@@ -1,4 +1,4 @@
-<%= form_with (model: [ @user, @user.assignments.build ], local: true) do |form| %>
+<%= form_with model: [:user, @assignment], local: true do |form| %>
  
     <% if @assignment.errors.any? %>
       <div id="error_explained">
@@ -15,13 +15,13 @@
     <% end %>
    
     <p>
-      <%= form.label :task %><br>
-      <%= form.text_field :task %>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
     </p>
    
     <p>
       <%= form.label :description %><br>
-      <%= form.text_area :description %>
+      <%= form.text_area :discription %>
     </p>
 
     <p>

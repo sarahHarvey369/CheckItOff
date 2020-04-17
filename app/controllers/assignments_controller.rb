@@ -1,49 +1,48 @@
 class AssignmentsController < ApplicationController
     def index
-        @assignments = Assignment.all
+        @assignments = current_user.assignments.all
     end
 
     def show
-        @assignment = Assignment.find(params[:id])
+        @assignment = current_user.assignments.find(params[:id])
     end
 
     def new
-        @assignment = Assignment.new
+        @assignment = current_user.assignments.new
     end
 
     def edit
-        @assignment = Assignment.find(params[:id])
+        @assignment = current_user.assignments.find(params[:id])
     end
 
     def create
-        @assignment = Assignment.new(assignment_params)
+        @assignment = current_user.assignments.new(assignment_params)
 
         if @assignment.save
-            redirect_to @assignment
+            redirect_to '/users/:user_id/assignments'
         else
             render 'new'
         end
     end
 
     def update
-        @assignment = Assignment.find(params[:id])
+        @assignment = current_user.assignments.find(params[:id])
 
         if @assignment.update(assignment_params)
-            redirect_to @assignment
+            redirect_to '/users/:user_id/assignments'
         else
             render 'edit'
         end
     end
 
     def destroy
-        @assignment = Assignment.find(params[:id])
+        @assignment = current_user.assignments.find(params[:id])
         @assignment.destroy
 
-        redirect_to assignments_path
+        redirect_to '/users/:user_id/assignments'
     end
 
-    private
-        def assignment_params
-            params.require(:assignment).permit(:task, :description, :deadline)
-        end
+    def assignment_params
+        params.require(:assignment).permit(:title, :discription, :deadline)
+    end
 end

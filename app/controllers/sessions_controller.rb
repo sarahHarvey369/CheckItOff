@@ -3,13 +3,12 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = User.find_by_email(params[:email])
-        if user && user.authenticate(params[:password])
-            session[:user_id] = user.user_id
-            redirect_to user_assignments_path, notice: "Logged in!"
+        @user = User.find_by_email_and_password(params[:email], params[:password])
+        if @user 
+            session[:user_id] = @user.id
+            redirect_to '/users/:user_id/assignments'
         else
-            flash.now[:alert] = "Email or password is invalid"
-            render "new"
+            render 'sessions#new'
         end
     end
 

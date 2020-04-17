@@ -1,11 +1,11 @@
 <p>
   <strong>Task:</strong>
-  <%= @assignment.task %>
+  <%= @assignment.title %>
 </p>
  
 <p>
   <strong>Description:</strong>
-  <%= @assignment.description %>
+  <%= @assignment.discription %>
 </p>
 
 <p>
@@ -13,5 +13,5 @@
   <%= @assignment.deadline %>
 </p>
 
-<%= link_to 'Edit', edit_assignment_path(@assignment) %>  |  
-<%= link_to 'Assignment List', assignments_path %>
+<%= link_to 'Edit', edit_user_assignment_path(@assignment) %>  |  
+<%= link_to 'Assignment List', '/users/:user_id/assignments' %>

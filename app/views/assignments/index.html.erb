@@ -1,4 +1,21 @@
-<h1>Assignments List</h1>
+<style>
+h1 {
+    font-size: 36px;
+    font-weight: bolder;
+    margin-left: 50px;
+    margin-bottom: 0px;
+}
+
+h3 {
+    margin-top: 0px;
+    margin-left: 40px;
+}
+</style>
+
+<h1><%= image_tag  "checkmark.png" %> Check It Off </h1>
+<h3> Keeping Your Assignments Organized! </h3>
+
+<h2>Assignments List</h2>
 <%= link_to 'Add New Assignment', '/users/:user_id/assignments/new' %>
 
 <table>
@@ -6,17 +23,16 @@
     <th>Task</th>
     <th>Description</th>
     <th>Deadline</th>
-    <th colspan="4"></th>
   </tr>
  
   <% @assignments.each do |assignment| %>
     <tr>
-        <td><%= assignment.task %></td>
-        <td><%= assignment.description %></td>
+        <td><%= assignment.title %></td>
+        <td><%= assignment.discription %></td>
         <td><%= assignment.deadline %></td>
-        <td><%= link_to 'Show', user_assignment_path(assignment) %></td>
-        <td><%= link_to 'Edit', edit_user_assignment_path(assignment) %></td>
-        <td><%= link_to 'Remove', user_assignments_path(assignment),
+        <td><%= link_to 'Show', user_assignment_path(current_user, assignment) %></td>
+        <td><%= link_to 'Edit', edit_user_assignment_path(current_user, assignment) %></td>
+        <td><%= link_to 'Remove', user_assignment_path(current_user, assignment, id: assignment.id),
                 method: :delete,
                 data: { confirm: 'Are you sure?' } %></td>..
     </tr>

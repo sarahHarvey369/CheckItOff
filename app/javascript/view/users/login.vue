@@ -1,5 +1,5 @@
 <template>
-    <form method="post" action="/users">
+    <form method="post" action="/sessions">
         <input type="hidden" name="authenticity_token" :value="csrf">
         <div class="field">
             <label class="label">Email</label>
