@@ -1,24 +1,25 @@
 <style>
-h1 {
-    font-size: 36px;
-    font-weight: bolder;
-    margin-left: 50px;
-    margin-bottom: 0px;
-}
-
-h3 {
-    margin-top: 0px;
-    margin-left: 40px;
-}
 </style>
+<nav class="navbar navbar-inverse" >
+  <div class="container-fluid" style="height:100px">
+    <div class="navbar-header" style="margin-top:15px">
+        <a class="navbar-brand" ><%= image_tag  "checkmark.png" %></a>
+        <a class="navbar-brand" style="color:white; font-size: 30px">Check It Off <br><p style="font-size: 11px">Keeping Your Assignments Organized!</p></a>
+    </div>
+    <ul class="nav navbar-nav" style="margin-top:20px">
+        <li><a href="#">Home</a></li>
+        <li><a href="/users/new">Create Account</a></li>
+        <li><a href="/sessions/new">Login</a></li>
+    </ul>
+  </div>
+</nav>
 
-<h1><%= image_tag  "checkmark.png" %> Check It Off </h1>
-<h3> Keeping Your Assignments Organized! </h3>
+<div class="jumbotron text-center">
+  <h1></h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
 
-<div id="get-started">
-    <p>New users can create account here: </p>
-    <%= link_to 'Create Account', controller: 'users', action: 'new' %>
-
-    <p>Already have an account, log in here: </p>
-    <%= link_to 'Log In', controller: 'sessions', action: 'new' %>
+<div class="container">
+    <h4>About Check It Off</h4>
+    <p>This is where I'll describe how this site can help with keeping track of assignments</p>
 </div>

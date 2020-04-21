@@ -12,11 +12,9 @@ h3 {
 }
 </style>
 
-<h1><%= image_tag  "checkmark.png" %> Check It Off </h1>
-<h3> Keeping Your Assignments Organized! </h3>
+<%= render 'navbar' %>
 
 <h2>Assignments List</h2>
-<%= link_to 'Add New Assignment', '/users/:user_id/assignments/new' %>
 
 <table>
   <tr>
@@ -34,7 +32,7 @@ h3 {
         <td><%= link_to 'Edit', edit_user_assignment_path(current_user, assignment) %></td>
         <td><%= link_to 'Remove', user_assignment_path(current_user, assignment, id: assignment.id),
                 method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>..
+                data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
