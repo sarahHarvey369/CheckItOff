@@ -1,0 +1,13 @@
+<nav class="navbar navbar-inverse" >
+  <div class="container-fluid" style="height:100px">
+    <div class="navbar-header" style="margin-top:15px">
+        <a class="navbar-brand" ><%= image_tag  "checkmark.png" %></a>
+        <a class="navbar-brand" style="color:white; font-size: 30px">Check It Off <br><p style="font-size: 11px">Keeping Your Assignments Organized!</p></a>
+    </div>
+    <ul class="nav navbar-nav" style="margin-top:20px; font-size:16px">
+        <li id="assignments"><a href="/users/:user_id/assignments">Assignments</a></li>
+        <li id="add-new-assignment"><a href="/users/:user_id/assignments/new">Add New Assignment</a></li>
+        <li id="logout"><a href="/welcome/index">Log Out</a></li>
+    </ul>
+  </div>
+</nav>
