@@ -1,38 +1,109 @@
 <style>
-h1 {
-    font-size: 36px;
-    font-weight: bolder;
-    margin-left: 50px;
-    margin-bottom: 0px;
+.purple {
+  background-color:purple;
 }
-
-h3 {
-    margin-top: 0px;
-    margin-left: 40px;
+#table-header {
+  cursor:pointer;
+}
+.color-label {
+  border-top:none;
+  border-left:none;
+  border-right:none;
+  width:100px;
 }
 </style>
 
 <%= render 'navbar' %>
 
-<h2>Assignments List</h2>
+<h2 style="text-align:center;">Assignments List</h2>
 
-<table>
-  <tr>
-    <th>Task</th>
-    <th>Description</th>
-    <th>Deadline</th>
-  </tr>
- 
-  <% @assignments.each do |assignment| %>
-    <tr>
+<div class="d-flex justify-content-between">
+
+  <table class="table" style="width:200px;">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="bg-primary" id="royal-blue"><input type="checkbox" id="bg-primary" name="royal-blue" value="bg-primary" onclick='controlCheckboxes()'></td>
+        <td class="color-label"><input type="input" class="color-label" id="bg-primary" placeholder="Add Label"></td>
+      </tr>
+      <tr>
+        <td class="bg-success" id="green"><input type="checkbox" id="bg-success" name="green" value="bg-success" onclick='controlCheckboxes()'></td>
+        <td class="color-label"><input type="input" class="color-label" id="bg-success" placeholder="Add Label"></td>
+      </tr>
+      <tr>
+        <td class="bg-warning" id="yellow"><input type="checkbox" id="bg-warning" name="yellow" value="bg-warning" onclick='controlCheckboxes()'></td>
+        <td class="color-label"><input type="input" class="color-label" id="bg-warning" placeholder="Add Label"></td>
+      </tr>
+      <tr>
+        <td class="bg-danger" id="red"><input type="checkbox" id="bg-danger" name="red" value="bg-danger" onclick='controlCheckboxes()'></td>
+        <td class="color-label"><input type="input" class="color-label" id="bg-danger" placeholder="Add Label"></td>
+      </tr>
+      <tr>
+        <td class="bg-info" id="light-blue"><input type="checkbox" id="bg-info" name="light-blue" value="bg-info" onclick='controlCheckboxes()'></td>
+        <td class="color-label"><input type="input" class="color-label" id="bg-info" placeholder="Add Label"></td>
+      </tr>
+      <tr>
+        <td class="purple" id="purple"><input type="checkbox" id="purple" name="purple" value="purple" onclick='controlCheckboxes()'></td>
+        <td class="color-label"><input type="input" class="color-label" id="purple" placeholder="Add Label"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-dark" style="width:900px; margin:auto;">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Due Date</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @assignments.each do |assignment| %>
+
+      <tr>
+        <th scope="row" id="table-header"></th>
         <td><%= assignment.title %></td>
         <td><%= assignment.discription %></td>
         <td><%= assignment.deadline %></td>
-        <td><%= link_to 'Show', user_assignment_path(current_user, assignment) %></td>
-        <td><%= link_to 'Edit', edit_user_assignment_path(current_user, assignment) %></td>
-        <td><%= link_to 'Remove', user_assignment_path(current_user, assignment, id: assignment.id),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+        <td><small><%= link_to 'Show', user_assignment_path(current_user, assignment) %></small>
+          <small><%= link_to 'Edit', edit_user_assignment_path(current_user, assignment) %></small>
+          <small><%= link_to 'Remove', user_assignment_path(current_user, assignment, id: assignment.id),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></small></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+
+  function controlCheckboxes() {
+    $("input[type='checkbox']").click(function() {
+      $("input[type='checkbox']").not(this).prop('checked', false);
+    });
+  }
+
+  $(document).ready(function() {
+    $("input[type='checkbox']").change(function() {
+      if ($(this).prop('checked') === true) {
+        let color = this.id;
+        console.log("color: " + color);
+        $("#table-header").click(function() {
+          console.log("color: " + color);
+          $(this).attr("class", color);
+          console.log("this: " + this.id);
+        });
+      }
+    });
+  });
+
+</script>
