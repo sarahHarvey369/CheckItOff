@@ -1,7 +1,31 @@
+<style>
+#add-new-header {
+    background-color:black;
+    color:#007bff;
+    width:500px;
+    height: 60px;
+    font-size:30px;
+    margin:auto;
+    padding-top:15px;
+    text-align:center;
+}
+#add-new-form {
+    background-color:#007bff;
+    color:black;
+    width:500px;
+    margin:auto;
+    height:300px;
+    font-size:14px;
+}
+</style>
+
 <%= render 'navbar' %>
 
-<h1>Add New Assignment<h1>
+<div class="container" id="add-new-header">
+    <h1>Add New Assignment<h1>
+</div>
+<div class="container" id="add-new-form">
+    <%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Cancel', '/users/:user_id/assignments' %>
+    <%= link_to 'Cancel', '/users/:user_id/assignments' %>
+</div>
