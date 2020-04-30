@@ -5,51 +5,37 @@
 #table-header {
   cursor:pointer;
 }
-.color-label {
-  border-top:none;
-  border-left:none;
-  border-right:none;
-  width:100px;
-}
 </style>
-
 <%= render 'navbar' %>
 
 <h2 style="text-align:center;">Assignments List</h2>
 
 <div class="d-flex justify-content-between">
 
-  <table class="table" style="width:200px;">
+  <table class="table" style="width:100px;">
     <thead>
       <tr>
-        <th scope="col"></th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td class="bg-primary" id="royal-blue"><input type="checkbox" id="bg-primary" name="royal-blue" value="bg-primary" onclick='controlCheckboxes()'></td>
-        <td class="color-label"><input type="input" class="color-label" id="bg-primary" placeholder="Add Label"></td>
       </tr>
       <tr>
         <td class="bg-success" id="green"><input type="checkbox" id="bg-success" name="green" value="bg-success" onclick='controlCheckboxes()'></td>
-        <td class="color-label"><input type="input" class="color-label" id="bg-success" placeholder="Add Label"></td>
       </tr>
       <tr>
         <td class="bg-warning" id="yellow"><input type="checkbox" id="bg-warning" name="yellow" value="bg-warning" onclick='controlCheckboxes()'></td>
-        <td class="color-label"><input type="input" class="color-label" id="bg-warning" placeholder="Add Label"></td>
       </tr>
       <tr>
         <td class="bg-danger" id="red"><input type="checkbox" id="bg-danger" name="red" value="bg-danger" onclick='controlCheckboxes()'></td>
-        <td class="color-label"><input type="input" class="color-label" id="bg-danger" placeholder="Add Label"></td>
       </tr>
       <tr>
         <td class="bg-info" id="light-blue"><input type="checkbox" id="bg-info" name="light-blue" value="bg-info" onclick='controlCheckboxes()'></td>
-        <td class="color-label"><input type="input" class="color-label" id="bg-info" placeholder="Add Label"></td>
       </tr>
       <tr>
         <td class="purple" id="purple"><input type="checkbox" id="purple" name="purple" value="purple" onclick='controlCheckboxes()'></td>
-        <td class="color-label"><input type="input" class="color-label" id="purple" placeholder="Add Label"></td>
       </tr>
     </tbody>
   </table>
@@ -69,7 +55,7 @@
       <% @assignments.each do |assignment| %>
 
       <tr>
-        <th scope="row" id="table-header"></th>
+        <th scope="row" id="table-header" class="<%= assignment.color %>"></th>
         <td><%= assignment.title %></td>
         <td><%= assignment.discription %></td>
         <td><%= assignment.deadline %></td>
@@ -98,9 +84,20 @@
         let color = this.id;
         console.log("color: " + color);
         $("#table-header").click(function() {
-          console.log("color: " + color);
           $(this).attr("class", color);
-          console.log("this: " + this.id);
+          $("." + color).submit(function() {
+            $.ajax({
+              type: 'POST',
+              url: '/users/:user_id/assignments/',
+              data: color,
+              error: function(data){
+                alert('Error occurred while updating the record.');
+              }, 
+              success: function(data){
+                alert('Record updated successfully.');
+              }
+            });
+          });
         });
       }
     });
