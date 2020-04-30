@@ -1,7 +1,32 @@
+<style>
+#add-new-header {
+    border: 3px solid #343a40;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #343a40;
+    color:white;
+    width:500px;
+    height: 80px;
+    font-size:30px;
+    margin:auto;
+    padding-top:25px;
+    text-align:center;
+}
+#add-new-form {
+    border: 3px solid #343a40;
+    border-radius: 0px 0px 15px 15px;
+    color:black;
+    width:500px;
+    margin:auto;
+    height:350px;
+    font-size: 14px;
+}
+</style>
+
 <%= render 'navbar' %>
 
-<h1>Edit Assignment<h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Cancel', '/users/:user_id/assignments' %>
+<div class="container" id="add-new-header">
+    <h1>Edit Assignment<h1>
+</div>
+<div class="container" id="add-new-form">
+    <%= render 'form' %>
+</div>
