@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
+  resources :assignments
+
   resources :users, only: [:new, :create] do
     resources :assignments
   end
