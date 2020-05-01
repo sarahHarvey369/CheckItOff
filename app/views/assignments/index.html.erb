@@ -6,6 +6,7 @@
   cursor:pointer;
 }
 </style>
+
 <%= render 'navbar' %>
 
 <h2 style="text-align:center;">Assignments List</h2>
@@ -72,6 +73,21 @@
 
 <script>
 
+  // function postData(url='', data= {}) {
+  //   const response = fetch(url, {
+  //     method:'PATCH',
+  //     mode: 'cors',
+  //     cache: 'no-cache',
+  //     credentials: 'same-origin',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     redirect: 'follow',
+  //     body: JSON.stringify(data)
+  //   });
+  //   return response.json();
+  // }
+
   function controlCheckboxes() {
     $("input[type='checkbox']").click(function() {
       $("input[type='checkbox']").not(this).prop('checked', false);
@@ -82,22 +98,13 @@
     $("input[type='checkbox']").change(function() {
       if ($(this).prop('checked') === true) {
         let color = this.id;
-        console.log("color: " + color);
+        // console.log("color: " + color);
         $("#table-header").click(function() {
           $(this).attr("class", color);
-          $("." + color).submit(function() {
-            $.ajax({
-              type: 'POST',
-              url: '/users/:user_id/assignments/',
-              data: color,
-              error: function(data){
-                alert('Error occurred while updating the record.');
-              }, 
-              success: function(data){
-                alert('Record updated successfully.');
-              }
-            });
-          });
+          // postData('/users/:user_id/assignments/<%= @assignment %>', {color: color})
+          // .then(data => {
+          //   console.log("data: " + data);
+          // });
         });
       }
     });
